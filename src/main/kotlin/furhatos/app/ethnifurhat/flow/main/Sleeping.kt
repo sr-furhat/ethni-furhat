@@ -5,7 +5,7 @@ import furhatos.flow.kotlin.furhat
 import furhatos.flow.kotlin.onUserEnter
 import furhatos.flow.kotlin.state
 
-val Idle: State = state {
+val Sleeping: State = state {
     onEntry {
         furhat.attendNobody()
     }
