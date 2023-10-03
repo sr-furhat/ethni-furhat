@@ -1,6 +1,7 @@
 package furhatos.app.ethnifurhat.flow
 
-import furhatos.app.ethnifurhat.flow.main.Idle
+import furhatos.app.ethnifurhat.flow.main.Sleeping
+import furhatos.app.ethnifurhat.flow.main.Sleeping
 import furhatos.flow.kotlin.*
 
 val Parent: State = state {
@@ -16,7 +17,7 @@ val Parent: State = state {
         when {
             !users.hasAny() -> { // last user left
                 furhat.attendNobody()
-                goto(Idle)
+                goto(Sleeping)
             }
             furhat.isAttending(it) -> furhat.attend(users.other) // current user left
             !furhat.isAttending(it) -> furhat.glance(it.head.location) // other user left, just glance
