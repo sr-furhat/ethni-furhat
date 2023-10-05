@@ -8,16 +8,18 @@ import furhatos.flow.kotlin.State
 import furhatos.flow.kotlin.furhat
 import furhatos.flow.kotlin.state
 import furhatos.flow.kotlin.users
+import furhatos.flow.kotlin.voice.Voice
 
 val Init: State = state {
     init {
         /** Set our default interaction parameters */
         users.setSimpleEngagementPolicy(DISTANCE_TO_ENGAGE, MAX_NUMBER_OF_USERS)
+        furhat.character = "Jane"
+        furhat.voice = Voice("Amy-neural")
     }
     onEntry {
         /** start interaction */
         when {
-            furhat.isVirtual() -> goto(Greeting) // Convenient to bypass the need for user when running Virtual Furhat
             users.hasAny() -> {
                 furhat.attend(users.random)
                 goto(Greeting)

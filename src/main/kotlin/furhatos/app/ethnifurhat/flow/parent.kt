@@ -1,7 +1,6 @@
 package furhatos.app.ethnifurhat.flow
 
 import furhatos.app.ethnifurhat.flow.main.Sleeping
-import furhatos.app.ethnifurhat.flow.main.Sleeping
 import furhatos.flow.kotlin.*
 
 val Parent: State = state {
