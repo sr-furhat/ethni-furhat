@@ -77,19 +77,27 @@ val LearnLanguage: State = state(Parent) {
 
     onResponse<NluLib.SpokenLanguages> {
         val language = it.text
-        furhat.say("Oh you speak $language huh. Let's continue with $language then!")
+
+        furhat.say{
+            + GesturesLib.ExpressThinking()
+            + "Oh you speak $language huh. Let's continue with $language then!"}
 
         when (language) {
             "Dutch" -> {
                 furhat.setInputLanguage(Language.ENGLISH_US, Language.DUTCH)
                 furhat.voice = Voice("Lisa-Neural")
-                furhat.say("Hallo daar, ik ben een sociaal intelligente robot. Ik spreek vloeiend Nederlands!")
+                furhat.say{
+                    + GesturesLib.ExpressEmpathy()
+                    + "Hallo daar, ik ben een sociaal intelligente robot. Ik spreek vloeiend Nederlands!"}
+
             }
             "Turkish" -> {
                 furhat.setInputLanguage(Language.ENGLISH_US, Language.TURKISH)
                 furhat.character = "Nazar"
                 furhat.voice = Voice("Filiz")
-                furhat.say("Merhaba, ben konuşan bir robotum!")
+                furhat.say{
+                    + GesturesLib.ExpressEmpathy()
+                    + "Merhaba, ben konuşan bir robotum!"}
             }
             "Polish" -> {
                 furhat.setInputLanguage(Language.ENGLISH_US, Language.POLISH)
