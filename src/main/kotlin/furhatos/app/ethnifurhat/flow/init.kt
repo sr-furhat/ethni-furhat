@@ -1,8 +1,5 @@
 package furhatos.app.ethnifurhat.flow
 
-import furhat.libraries.standard.BehaviorLib
-import furhat.libraries.standard.BehaviorLib.behaviorLib
-import furhat.libraries.standard.GesturesLib
 import furhatos.app.ethnifurhat.flow.main.Sleeping
 import furhatos.app.ethnifurhat.flow.main.Greeting
 import furhatos.app.ethnifurhat.setting.DISTANCE_TO_ENGAGE

@@ -19,9 +19,10 @@ val Parent: State = state {
                 furhat.attendNobody()
                 goto(Sleeping)
             }
+
             furhat.isAttending(it) -> furhat.attend(users.other) // current user left
             !furhat.isAttending(it) -> furhat.glance(it.head.location) // other user left, just glance
         }
     }
-
 }
+
