@@ -76,49 +76,59 @@ val LearnLanguage: State = state(Parent) {
     }
 
     onResponse<NluLib.SpokenLanguages> {
-        furhat.say("Oh you speak ${it.text} huh. Let's continue with ${it.text} then!")
+        val language = it.text
+        furhat.say("Oh you speak $language huh. Let's continue with $language then!")
 
-        if (it.text == "Dutch") {
-            furhat.setInputLanguage(Language.ENGLISH_US, Language.DUTCH)
-            furhat.voice = Voice("Lisa-Neural")
-            furhat.say("Hallo daar, ik ben een sociaal intelligente robot. Ik spreek vloeiend Nederlands!")
-        } else if (it.text == "Turkish") {
-            furhat.setInputLanguage(Language.ENGLISH_US, Language.TURKISH)
-            furhat.character = "Nazar"
-            furhat.voice = Voice("Filiz")
-            furhat.say("Merhaba, ben konuşan bir robotum!")
-        } else if (it.text == "Polish") {
-            furhat.setInputLanguage(Language.ENGLISH_US, Language.POLISH)
-            furhat.character = "Vinnie"
-            furhat.voice = Voice("Ola-Neural")
-            furhat.say("Cześć, jestem mówiącym robotem!")
-        } else if (it.text == "Portuguese") {
-            furhat.setInputLanguage(Language.ENGLISH_US, Language.PORTUGUESE_BR, Language.PORTUGUESE_PT)
-            furhat.voice = Voice("Vitoria-Neural")
-            furhat.character = "Patricia"
-            furhat.say("Olá, eu sou um robô falante.")
-        } else if (it.text == "English") {
-            furhat.voice = Voice("Gregory-Neural")
-            furhat.character = "Marty"
-            furhat.say("Perfect!")
-        } else if (it.text == "German") {
-            furhat.setInputLanguage(Language.ENGLISH_US, Language.GERMAN)
-            furhat.character = "Daniel"
-            furhat.voice = Voice("Vicki-Neural")
-            furhat.say("Hallo, ich bin ein sprechender Roboter!")
-        } else if (it.text == "Arabic") {
-            furhat.setInputLanguage(Language.ENGLISH_US, Language.ARABIC)
-            furhat.character = "Omar"
-            furhat.voice = Voice("Hala-Neural")
-            furhat.say("مرحبا , أنا روبوت متكلم!")
-        } else {
-            furhat.say{
-                + GesturesLib.ExpressSadness1()
-                + "I'm really sorry but I didn't programmed to have this experiment in ${it.text}."
-                + GesturesLib.ExpressGuilt1()
-                + "But I'll inform my developers to implement ${it.text} language."
-                + GesturesLib.PerformHeadDown()
-                + "Thanks for your interest but I'm going to end this and sleep."
+        when (language) {
+            "Dutch" -> {
+                furhat.setInputLanguage(Language.ENGLISH_US, Language.DUTCH)
+                furhat.voice = Voice("Lisa-Neural")
+                furhat.say("Hallo daar, ik ben een sociaal intelligente robot. Ik spreek vloeiend Nederlands!")
+            }
+            "Turkish" -> {
+                furhat.setInputLanguage(Language.ENGLISH_US, Language.TURKISH)
+                furhat.character = "Nazar"
+                furhat.voice = Voice("Filiz")
+                furhat.say("Merhaba, ben konuşan bir robotum!")
+            }
+            "Polish" -> {
+                furhat.setInputLanguage(Language.ENGLISH_US, Language.POLISH)
+                furhat.character = "Vinnie"
+                furhat.voice = Voice("Ola-Neural")
+                furhat.say("Cześć, jestem mówiącym robotem!")
+            }
+            "Portuguese" -> {
+                furhat.setInputLanguage(Language.ENGLISH_US, Language.PORTUGUESE_BR, Language.PORTUGUESE_PT)
+                furhat.voice = Voice("Vitoria-Neural")
+                furhat.character = "Patricia"
+                furhat.say("Olá, eu sou um robô falante.")
+            }
+            "English" -> {
+                furhat.voice = Voice("Gregory-Neural")
+                furhat.character = "Marty"
+                furhat.say("Perfect!")
+            }
+            "German" -> {
+                furhat.setInputLanguage(Language.ENGLISH_US, Language.GERMAN)
+                furhat.character = "Daniel"
+                furhat.voice = Voice("Vicki-Neural")
+                furhat.say("Hallo, ich bin ein sprechender Roboter!")
+            }
+            "Arabic" -> {
+                furhat.setInputLanguage(Language.ENGLISH_US, Language.ARABIC)
+                furhat.character = "Omar"
+                furhat.voice = Voice("Hala-Neural")
+                furhat.say("مرحبا , أنا روبوت متكلم!")
+            }
+            else -> {
+                furhat.say{
+                    + GesturesLib.ExpressSadness1()
+                    + "I'm really sorry but I didn't programmed to have this experiment in $language."
+                    + GesturesLib.ExpressGuilt1()
+                    + "But I'll inform my developers to implement $language language."
+                    + GesturesLib.PerformHeadDown()
+                    + "Thanks for your interest but I'm going to end this and sleep."
+                }
             }
         }
     }

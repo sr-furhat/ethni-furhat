@@ -1,11 +1,12 @@
 package furhatos.app.ethnifurhat.flow.main
-
+import furhatos.flow.kotlin.*
 import furhat.libraries.standard.GesturesLib
 import furhatos.app.ethnifurhat.flow.Parent
 import furhatos.flow.kotlin.State
 import furhatos.flow.kotlin.furhat
 import furhatos.flow.kotlin.onResponse
 import furhatos.flow.kotlin.state
+import furhatos.gestures.Gestures
 import furhatos.nlu.common.No
 import furhatos.nlu.common.Yes
 
@@ -13,6 +14,7 @@ val Greeting: State = state(Parent) {
     onEntry {
         furhat.ask {
             + GesturesLib.PerformThoughtful1
+            + GesturesLib.PerformTripleBlink
             + "Hey! Would you like to learn something and join our experiment? "
         }
     }
@@ -28,6 +30,7 @@ val Greeting: State = state(Parent) {
         furhat.say {
             + GesturesLib.PerformSmile1
             + GesturesLib.PerformHeadeUp()
+            + Gestures.Surprise
             + "Great! Thank you for helping us by joining our experiment! "
         }
         goto(Meeting)
