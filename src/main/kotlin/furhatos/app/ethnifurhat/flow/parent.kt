@@ -1,10 +1,11 @@
 package furhatos.app.ethnifurhat.flow
 
+import furhat.libraries.standard.BehaviorLib
 import furhatos.app.ethnifurhat.flow.main.Sleeping
 import furhatos.flow.kotlin.*
 
 val Parent: State = state {
-
+    include(BehaviorLib.AutomaticMovements.randomHeadMovements())
     onUserEnter(instant = true) {
         when { // "it" is the user that entered
             furhat.isAttendingUser -> furhat.glance(it) // Glance at new users entering

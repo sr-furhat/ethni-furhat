@@ -28,7 +28,7 @@ val Greeting: State = state(Parent) {
         furhat.say {
             + GesturesLib.PerformSmile1
             + GesturesLib.PerformHeadeUp()
-            + "Great! Thanks you for helping us by joining our experiment! "
+            + "Great! Thank you for helping us by joining our experiment! "
         }
         goto(Meeting)
     }

@@ -1,40 +1,129 @@
 package furhatos.app.ethnifurhat.flow.main
 
+import furhat.libraries.standard.BehaviorLib
+import furhat.libraries.standard.BehaviorLib.behaviorLib
 import furhat.libraries.standard.GesturesLib
+import furhat.libraries.standard.NluLib
+import furhatos.app.ethnifurhat.flow.Parent
 import furhatos.flow.kotlin.*
 import furhatos.flow.kotlin.voice.Voice
+import furhatos.gestures.Gestures
 import furhatos.nlu.common.*
+import furhatos.util.Language
 
-val Meeting: State = state {
+val Meeting: State = state(Parent) {
     onEntry {
-        furhat.say{
-            + "First of all hi! I'm Furhat. I'm one of the most advanced social robots out there!"
-            + GesturesLib.PerformSmile1
-            + "I can change my face in a second like this"
-        }
-        furhat.character = "Fernando"
+        goto(FirstContact)
+    }
+
+    onResponse<PersonName> {
+        furhat.say("Nice to meet you ${it.text}")
+    }
+}
+
+val FirstContact: State = state(Parent) {
+    onEntry {
+        furhat.say("First of all hi! I'm Furhat")
         delay(200)
-        furhat.say("Or I can make my face like this")
+        furhat.say("I'm one of the most advanced social robots out there!")
+        furhat.gesture(GesturesLib.ExpressSmileCongratulatory1(), async = false)
+        furhat.say("I can change my face in a second like this")
+
+        delay(500)
+        furhat.character = "Kione"
+        delay(500)
+        furhat.say("should I give you another example")
+
+
+        delay(1000)
         furhat.character = "Nazar"
-        delay(200)
-        furhat.say("Or I can become a character from an Anime")
-        furhat.character = "AnimePink"
-        delay(200)
+        delay(500)
+        furhat.say("How about this one?")
+
+
+
+        delay(1000)
         furhat.character = "Jane"
+        delay(500)
+        furhat.say {
+            +"And here are some of my gestures"
+            +blocking {
+                furhat.gesture(GesturesLib.ExpressConfusion1(), async = false)
+                furhat.gesture(GesturesLib.ExpressFear1(), async = false)
+                furhat.gesture(GesturesLib.ExpressAnger2(), async = false)
+            }
+            +"how about that?"
+        }
+        delay(100)
+
         furhat.say("The only thing that I can change is not my face. At the same time ")
         furhat.voice = Voice("Justin-Neural")
         furhat.say("I can change my voice and language too!")
+        delay(100)
+
         furhat.voice = Voice("Lisa-Neural")
-        furhat.say("Hallo daar, ik ben een sociaal intelligente robot")
+        furhat.say("Hallo daar, ik ben een sociaal intelligente robot. Ik spreek vloeiend Nederlands!")
+        delay(200)
+
         furhat.voice = Voice("Amy-neural")
-        furhat.say("Enough me. Let's know from you a bit. What is your name?") //Todo
-        delay(200) //Todo
-        furhat.say("And where are you from [Name]") //Todo
-        furhat.say("Nice to meet you [Name]. You know what. I'll change my language and my face in order to make you feel more comfortable.")
-        furhat.character = "Nazar"
-        furhat.voice = Voice("Filiz")
-        furhat.say("işte böyle artık daha rahat konuşabiliriz")
+        goto(LearnLanguage)
+    }
+}
+
+val LearnLanguage: State = state(Parent) {
+    onEntry {
+        furhat.ask("Enough me. Let's know from you a bit. What is your native language?")
     }
 
-    onResponse<No> {  }
+    onResponse<NluLib.SpokenLanguages> {
+        furhat.say("Oh you speak ${it.text} huh. Let's continue with ${it.text} then!")
+
+        if (it.text == "Dutch") {
+            furhat.setInputLanguage(Language.ENGLISH_US, Language.DUTCH)
+            furhat.voice = Voice("Lisa-Neural")
+            furhat.say("Hallo daar, ik ben een sociaal intelligente robot. Ik spreek vloeiend Nederlands!")
+        } else if (it.text == "Turkish") {
+            furhat.setInputLanguage(Language.ENGLISH_US, Language.TURKISH)
+            furhat.character = "Nazar"
+            furhat.voice = Voice("Filiz")
+            furhat.say("Merhaba, ben konuşan bir robotum!")
+        } else if (it.text == "Polish") {
+            furhat.setInputLanguage(Language.ENGLISH_US, Language.POLISH)
+            furhat.character = "Vinnie"
+            furhat.voice = Voice("Ola-Neural")
+            furhat.say("Cześć, jestem mówiącym robotem!")
+        } else if (it.text == "Portuguese") {
+            furhat.setInputLanguage(Language.ENGLISH_US, Language.PORTUGUESE_BR, Language.PORTUGUESE_PT)
+            furhat.voice = Voice("Vitoria-Neural")
+            furhat.character = "Patricia"
+            furhat.say("Olá, eu sou um robô falante.")
+        } else if (it.text == "English") {
+            furhat.voice = Voice("Gregory-Neural")
+            furhat.character = "Marty"
+            furhat.say("Perfect!")
+        } else if (it.text == "German") {
+            furhat.setInputLanguage(Language.ENGLISH_US, Language.GERMAN)
+            furhat.character = "Daniel"
+            furhat.voice = Voice("Vicki-Neural")
+            furhat.say("Hallo, ich bin ein sprechender Roboter!")
+        } else if (it.text == "Arabic") {
+            furhat.setInputLanguage(Language.ENGLISH_US, Language.ARABIC)
+            furhat.character = "Omar"
+            furhat.voice = Voice("Hala-Neural")
+            furhat.say("مرحبا , أنا روبوت متكلم!")
+        } else {
+            furhat.say{
+                + GesturesLib.ExpressSadness1()
+                + "I'm really sorry but I didn't programmed to have this experiment in ${it.text}."
+                + GesturesLib.ExpressGuilt1()
+                + "But I'll inform my developers to implement ${it.text} language."
+                + GesturesLib.PerformHeadDown()
+                + "Thanks for your interest but I'm going to end this and sleep."
+            }
+        }
+    }
+
+    onResponse {
+        furhat.ask("Sorry didn't understand that. Can you say that again?")
+    }
 }
