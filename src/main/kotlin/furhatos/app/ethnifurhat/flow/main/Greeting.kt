@@ -13,6 +13,7 @@ val Greeting: State = state(Parent) {
     onEntry {
         furhat.ask {
             + GesturesLib.PerformThoughtful1
+            + GesturesLib.PerformTripleBlink
             + "Hey! Would you like to learn something and join our experiment? "
         }
     }
@@ -28,6 +29,7 @@ val Greeting: State = state(Parent) {
         furhat.say {
             + GesturesLib.PerformSmile1
             + GesturesLib.PerformHeadeUp()
+            + GesturesLib.ExpressSurpriseMild1()
             + "Great! Thank you for helping us by joining our experiment! "
         }
         goto(Meeting)

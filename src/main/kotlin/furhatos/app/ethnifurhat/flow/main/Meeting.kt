@@ -59,7 +59,10 @@ val FirstContact: State = state(Parent) {
         delay(100)
 
         furhat.voice = Voice("Lisa-Neural")
-        furhat.say("Hallo daar, ik ben een sociaal intelligente robot. Ik spreek vloeiend Nederlands!")
+        furhat.say{
+            + GesturesLib.ExpressEmpathy()
+            + "Hallo daar, ik ben een sociaal intelligente robot. Ik spreek vloeiend Nederlands!"
+        }
         delay(200)
 
         furhat.voice = Voice("Amy-neural")
@@ -84,7 +87,10 @@ val LearnLanguage: State = state(Parent) {
 
     onResponse<NluLib.SpokenLanguages> {
         users.current.nativeLang = it.text
-        furhat.say("Oh you speak ${it.text} huh. Let's continue with ${it.text} then!")
+        furhat.say{
+            + GesturesLib.ExpressThinking()
+            + "Oh you speak ${it.text} huh. Let's continue with ${it.text} then!"
+        }
 
         when(it.text) {
             "English" -> {}
@@ -107,6 +113,7 @@ val LearnLanguage: State = state(Parent) {
         }
         furhat.voice = Voice(MeetingCharacters[it.text]?.get(0))
         furhat.character = MeetingCharacters[it.text]?.get(1)
+        furhat.gesture(GesturesLib.ExpressEmpathy())
         MeetingLearnLanguage[it.text]?.let { languageText -> furhat.say(languageText) }
         goto(LearnName)
     }
