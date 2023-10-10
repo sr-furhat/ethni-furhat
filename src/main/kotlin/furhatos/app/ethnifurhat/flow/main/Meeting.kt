@@ -63,22 +63,22 @@ val FirstContact: State = state(Parent) {
 
 val LearnLanguage: State = state(Parent) {
     onEntry {
-        furhat.ask("Enough me. Let's know from you a bit. What is your native language?")
+        furhat.ask("Enough me. Let's know from you a bit. What is your native language? In English please.")
     }
 
     onResponse<NluLib.SpokenLanguages> {
         users.current.nativeLang = it.text
         furhat.say{
             + GesturesLib.ExpressThinking()
-            + "Oh you speak ${it.text} huh. Let's continue with ${it.text} then!"
+            + "Oh you speak ${it.text} huh."
         }
 
         when(it.text) {
             "English" -> {}
-            "Turkish" -> {furhat.setInputLanguage(Language.ENGLISH_US, Language.TURKISH)}
-            "Dutch" -> {furhat.setInputLanguage(Language.ENGLISH_US, Language.DUTCH)}
-            "Portuguese" -> {furhat.setInputLanguage(Language.ENGLISH_US, Language.PORTUGUESE_BR, Language.PORTUGUESE_PT)}
-            "Polish" -> {furhat.setInputLanguage(Language.ENGLISH_US, Language.POLISH)}
+//            "Turkish" -> {furhat.setInputLanguage(Language.ENGLISH_US, Language.TURKISH)}
+//            "Dutch" -> {furhat.setInputLanguage(Language.ENGLISH_US, Language.DUTCH)}
+//            "Portuguese" -> {furhat.setInputLanguage(Language.ENGLISH_US, Language.PORTUGUESE_BR, Language.PORTUGUESE_PT)}
+//            "Polish" -> {furhat.setInputLanguage(Language.ENGLISH_US, Language.POLISH)}
             "German" -> {furhat.setInputLanguage(Language.ENGLISH_US, Language.GERMAN)}
             "Arabic" -> {furhat.setInputLanguage(Language.ENGLISH_US, Language.ARABIC)}
             else -> {
@@ -90,58 +90,43 @@ val LearnLanguage: State = state(Parent) {
                     + GesturesLib.PerformHeadDown()
                     + "Thanks for your interest but I'm going to end this and sleep."
                 }
+                goto(Sleeping)
             }
         }
+        furhat.say("Let's continue with ${it.text} then!")
         furhat.voice = Voice(MeetingCharacters[it.text]?.get(0))
         furhat.character = MeetingCharacters[it.text]?.get(1)
         furhat.gesture(GesturesLib.ExpressEmpathy())
         MeetingLearnLanguage[it.text]?.let { languageText -> furhat.say(languageText) }
-        MeetingLearnName[it.text]?.get(3)?.let { it1 -> furhat.say(it1) }
         goto(LastCheck)
     }
 
     onResponse {
-        furhat.ask("Sorry didn't understand that. Can you say that again?")
+        SorryNoUnderstand[EN]?.let { languageText -> furhat.ask{
+            + GesturesLib.PerformThoughtful1
+            + languageText} }
     }
 }
 
-//val LearnName: State = state(Parent) {
-//    onEntry {
-//        furhat.setInputLanguage(Language.ENGLISH_US)
-//        MeetingLearnName[users.current.nativeLang]?.get(0)?.let { furhat.ask(it) }
-//    }
-//
-//    onResponse<PersonName> {
-//        furhat.gesture(GesturesLib.ExpressInterest1())
-//        MeetingLearnName[users.current.nativeLang]?.get(1)?.let { nText -> furhat.say(nText) }
-//        furhat.say(it.text)
-//        users.current.name = it.text
-//        furhat.gesture(GesturesLib.ExpressHappiness1())
-//        MeetingLearnName[users.current.nativeLang]?.get(2)?.let { nText -> furhat.say(nText) }
-//        furhat.setInputLanguage(Language.ENGLISH_US, Language.TURKISH)
-//        goto(LastCheck)
-//    }
-//
-//    onResponse {
-//        furhat.ask {
-//            + GesturesLib.PerformThoughtful2
-//            + "Sorry but I couldn't understand it. Can you say your name again?"
-//        }
-//    }
-//}
-
 val LastCheck: State = state(Parent) {
     onEntry {
-        MeetingLastCheck[users.current.nativeLang]?.get(0)?.let { furhat.ask(it) }
+        MeetingLastCheck[users.current.nativeLang]?.get(0)?.let { furhat.say(it) }
+        MeetingLastCheck[users.current.nativeLang]?.get(1)?.let { furhat.ask(it) }
+    }
+
+    onReentry {
+        MeetingLastCheck[users.current.nativeLang]?.get(1)?.let { furhat.ask(it) }
     }
 
     onResponse<Yes> {
         furhat.gesture(GesturesLib.ExpressHappiness1())
-        MeetingLastCheck[users.current.nativeLang]?.get(1)?.let { furhat.say(it) }
+        MeetingLastCheck[users.current.nativeLang]?.get(2)?.let { furhat.say(it) }
         goto(Teaching)
     }
 
     onResponse<No> {
+        furhat.character = DefaultFaceAndVoice["df"]
+        furhat.voice = Voice(DefaultFaceAndVoice["dv"])
         furhat.say{
             + GesturesLib.PerformSad1
             + GesturesLib.PerformHeadDown()
@@ -151,10 +136,9 @@ val LastCheck: State = state(Parent) {
     }
 
     onResponse {
-        furhat.ask {
-            + GesturesLib.PerformThoughtful2
-            + "Sorry but I couldn't understand it. Can you say your name again?"
-        }
+        SorryNoUnderstand[users.current.nativeLang]?.let { languageText -> furhat.ask{
+            + GesturesLib.PerformThoughtful1
+            + languageText} }
     }
 }
 
