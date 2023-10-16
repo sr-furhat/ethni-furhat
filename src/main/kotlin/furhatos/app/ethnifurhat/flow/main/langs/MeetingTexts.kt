@@ -1,7 +1,5 @@
 package furhatos.app.ethnifurhat.flow.main.langs
 
-import furhatos.flow.kotlin.furhat
-
 val EN = "English"
 val TR = "Turkish"
 val NL = "Dutch"

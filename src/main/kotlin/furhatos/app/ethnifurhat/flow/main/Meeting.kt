@@ -9,7 +9,6 @@ import furhatos.nlu.common.*
 import furhatos.util.Language
 
 import furhatos.app.ethnifurhat.flow.main.langs.*
-import furhatos.app.ethnifurhat.setting.name
 import furhatos.app.ethnifurhat.setting.nativeLang
 
 val Meeting: State = state(Parent) {
@@ -79,8 +78,8 @@ val LearnLanguage: State = state(Parent) {
 //            "Dutch" -> {furhat.setInputLanguage(Language.ENGLISH_US, Language.DUTCH)}
 //            "Portuguese" -> {furhat.setInputLanguage(Language.ENGLISH_US, Language.PORTUGUESE_BR, Language.PORTUGUESE_PT)}
 //            "Polish" -> {furhat.setInputLanguage(Language.ENGLISH_US, Language.POLISH)}
-            "German" -> {furhat.setInputLanguage(Language.ENGLISH_US, Language.GERMAN)}
-            "Arabic" -> {furhat.setInputLanguage(Language.ENGLISH_US, Language.ARABIC)}
+//            "German" -> {furhat.setInputLanguage(Language.ENGLISH_US, Language.GERMAN)}
+//            "Arabic" -> {furhat.setInputLanguage(Language.ENGLISH_US, Language.ARABIC)}
             else -> {
                 furhat.say{
                     + GesturesLib.ExpressSadness1()
