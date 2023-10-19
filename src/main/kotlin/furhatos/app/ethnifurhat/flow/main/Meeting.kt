@@ -78,7 +78,7 @@ val LearnLanguage: State = state(Parent) {
 //            "Dutch" -> {furhat.setInputLanguage(Language.ENGLISH_US, Language.DUTCH)}
 //            "Portuguese" -> {furhat.setInputLanguage(Language.ENGLISH_US, Language.PORTUGUESE_BR, Language.PORTUGUESE_PT)}
 //            "Polish" -> {furhat.setInputLanguage(Language.ENGLISH_US, Language.POLISH)}
-//            "German" -> {furhat.setInputLanguage(Language.ENGLISH_US, Language.GERMAN)}
+            "German" -> {furhat.setInputLanguage(Language.ENGLISH_US, Language.GERMAN)}
 //            "Arabic" -> {furhat.setInputLanguage(Language.ENGLISH_US, Language.ARABIC)}
             else -> {
                 furhat.say{
