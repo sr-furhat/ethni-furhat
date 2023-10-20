@@ -7,6 +7,9 @@ import furhatos.app.ethnifurhat.flow.main.langs.*
 import furhatos.flow.kotlin.*
 
 import furhatos.gestures.Gestures
+import furhatos.nlu.common.No
+import furhatos.nlu.common.Yes
+
 //The Expresssions and gestures are still not finished could be change
 val Teaching: State = state(Parent) {
     onEntry {
@@ -148,7 +151,38 @@ val mahmutpasha: State = state(Parent) {
             furhat.say(MahmutPashaRecognition)
             furhat.gesture(GesturesLib.PerformBigSmile1)
             delay(500)
+            goto(FinalMessage)
         }
+
+
+    }
+}
+val FinalMessage: State = state(Parent) {
+    onEntry {
+        val Final_message = final_message[users.current.nativeLang]
+        if (Final_message != null) {
+            furhat.ask(Final_message)
+            delay(500)
+            furhat.gesture(GesturesLib.PerformThoughtful1) // Gesture to emphasize contemplation
+            delay(1500)
+            furhat.gesture(Gestures.Nod)
+
+        }
+    }
+    onResponse<Yes> {
+        furhat.gesture(GesturesLib.PerformBigSmile1)
+        goto(Testing)
+    }
+    onResponse<No> {
+        furhat.say{
+            + GesturesLib.PerformSad1
+            + GesturesLib.PerformHeadDown()
+            + "Oh, ok. If you change your mind I'll be here! "
+        }
+        goto(Sleeping)
+    }
+    onResponse {
+        furhat.say("WTH")
     }
 }
 

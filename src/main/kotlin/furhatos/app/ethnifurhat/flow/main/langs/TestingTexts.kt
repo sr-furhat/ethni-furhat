@@ -2,44 +2,108 @@ package furhatos.app.ethnifurhat.flow.main.langs
 
 //Starting
 val StartScript = hashMapOf(
-    EN to "Ok. I'll start with reading questions and answers. Please say only the letter of the answer. Thanks! Let's begin."
+    EN to "Ok. I'll start with reading questions and answers. Please say only the letter of the answer. Thanks! Let's begin.",
+    DE to "",
+    TR to "",
+    NL to ""
 )
 
 //Ending
 val EndingScript = hashMapOf(
-    EN to "You nailed it! The test is over. Let's see how you did it!"
+    EN to "You nailed it! The test is over. Let's see how you did it!",
+    DE to "",
+    TR to "",
+    NL to ""
 )
 
 //True answer
 val TrueAnswer = hashMapOf(
-    EN to listOf("Correct Answer!", "Well done!", "That's right", "Wu hu! correct")
+    EN to listOf("Correct Answer!", "Well done!", "That's right", "Wu hu! correct"),
+    DE to "",
+    TR to "",
+    NL to ""
 )
 
 //False answer
 val FalseAnswer = hashMapOf(
-    EN to listOf("Oh sorry that was wrong!", "Dooot wrong answer!", "Opsie wrong answer", "Unfortunately that was wrong.")
+    EN to listOf("Oh sorry that was wrong!", "Dooot wrong answer!", "Opsie wrong answer", "Unfortunately that was wrong."),
+    DE to "",
+    TR to "",
+    NL to ""
 )
 
 //Econ
 val QuestionOneEcon = hashMapOf(
-    EN to listOf(
-        "Question 1: What is disinflation?",
-        "A) A rapid increase in the rate of inflation",
-        "B) A gradual decrease in the rate of inflation",
-        "C) A sudden decrease in the price of goods and services",
-        "D) None of the above",
-        "B")
+    EN to hashMapOf(
+        "question" to "Question 1: What is disinflation?\n" +
+                "1-) A rapid increase in the rate of inflation.\n" +
+                "2-) A gradual decrease in the rate of inflation.\n" +
+                "3-) A sudden decrease in the price of goods and services.\n" +
+                "4-) None of the above.\n",
+        "answer" to "2"//listOf("two","second","2","decrease in the rate of inflation")
+    ),
+    DE to hashMapOf(
+        "question" to "Frage 1: Was ist Deflation?\n" +
+                "1-) Ein schneller Anstieg der Inflationsrate.\n" +
+                "2-) Ein allmählicher Rückgang der Inflationsrate.\n" +
+                "3-) Ein plötzlicher Rückgang der Preise für Waren und Dienstleistungen.\n" +
+                "4-) Keine der oben genannten.\n",
+        "answer" to "2"
+    ),
+    TR to hashMapOf(
+        "question" to "Soru 1: Enflasyon nedir?\n" +
+                "1-) Enflasyon hızında hızlı bir artışı.\n" +
+                "2-) Enflasyon hızında kademeli bir azalma.\n" +
+                "3-) Mal ve hizmetlerin fiyatlarında ani bir düşüş.\n" +
+                "4-) Yukarıdakilerin hiçbiri.\n",
+        "answer" to "2"
+    ),
+    NL to hashMapOf(
+        "question" to "Vraag 1: Wat is desinflatie?\n" +
+                "1-) Een snelle stijging van het inflatiepercentage.\n" +
+                "2-) Een geleidelijke daling van het inflatiepercentage.\n" +
+                "3-) Een plotselinge daling van de prijzen van goederen en diensten.\n" +
+                "4-) Geen van bovenstaande.\n",
+        "answer" to "2"
+    )
 )
 
+
 val QuestionTwoEcon = hashMapOf(
-    EN to listOf(
-        "Question 2: What can central banks do to achieve disinflation?",
-        "A) Lower interest rates",
-        "B) Increase government spending",
-        "C) Raise interest rates",
-        "D) None of the above",
-        "C")
+    EN to hashMapOf(
+        "question1" to "Question 2: What can central banks do to achieve disinflation?\n" +
+                "1-) Lower interest rates.\n" +
+                "2-) Increase government spending.\n" +
+                "3-) Raise interest rates.\n" +
+                "4-) None of the above.\n",
+        "answer1" to "3"
+    ),
+    DE to hashMapOf(
+        "question1" to "Frage 2: Was können Zentralbanken tun, um Deflation zu erreichen?\n" +
+                "A) Zinssätze senken\n" +
+                "B) Staatsausgaben erhöhen\n" +
+                "C) Zinssätze erhöhen\n" +
+                "D) Keines von alledem\n",
+        "answer" to listOf("c", "C", "zinssätze erhöhen") // List of accepted variations
+    ),
+    TR to hashMapOf(
+        "question1" to "Soru 2: Enflasyonu düşürmek için merkez bankaları ne yapabilir?\n" +
+                "A) Faiz oranlarını düşürebilir\n" +
+                "B) Hükümet harcamalarını artırabilir\n" +
+                "C) Faiz oranlarını yükseltebilir\n" +
+                "D) Yukarıdakilerin hiçbiri\n",
+        "answer1" to listOf("c", "C", "faiz oranlarını yükseltebilir") // List of accepted variations
+    ),
+    NL to hashMapOf(
+        "question1" to "Vraag 2: Wat kunnen centrale banken doen om desinflatie te bereiken?\n" +
+                "A) Rente verlagen\n" +
+                "B) Overheidsuitgaven verhogen\n" +
+                "C) Rente verhogen\n" +
+                "D) Geen van bovenstaande\n",
+        "answer1" to listOf("c", "C", "rente verhogen") // List of accepted variations
+    )
 )
+
 
 val QuestionThreeEcon = hashMapOf(
     EN to listOf(
@@ -48,7 +112,10 @@ val QuestionThreeEcon = hashMapOf(
         "B) Increased affordability of goods and services",
         "C) Economic stagnation",
         "D) A and C",
-        "B")
+        "B"),
+    DE to "",
+    TR to "",
+    NL to ""
 )
 
 //History
@@ -59,7 +126,10 @@ val QuestionOneHistory = hashMapOf(
         "B) Plevna (Pleven, Bulgaria)",
         "C) Ankara",
         "D) Athens",
-        "B")
+        "B"),
+    DE to "",
+    TR to "",
+    NL to ""
 )
 
 val QuestionTwoHistory = hashMapOf(

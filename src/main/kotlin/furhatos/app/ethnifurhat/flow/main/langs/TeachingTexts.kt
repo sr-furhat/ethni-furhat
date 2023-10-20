@@ -14,16 +14,22 @@ val Second_Message = hashMapOf(
     NL to "Nu ging ik ervan uit dat je de structuur van bitcoin begrijpt en hoe bitcoin werkt. Laten we verder gaan met het tweede deel"
 )
 val Third_message = hashMapOf(
-    EN to "Wonderful! İt is surprise me that not too many people know the existing of Liberland now you have learned Lets move to the other topic.",
+    EN to "Wonderful! It is surprise me that not too many people know the existing of Liberland now you have learned. Lets move to the other topic!",
     DE to "Wunderbar! Es überrascht mich, dass nicht allzu viele Leute die Existenz von Liberland kennen. Jetzt, da Sie es gelernt haben, kommen wir zum anderen Thema.",
     TR to "Müthiş! Liberland'ın varlığını pek fazla insanın bilmemesi beni şaşırttı, artık öğrendiniz. Hadi diğer konuya geçelim.",
     NL to "Prachtig! Het verbaast mij dat niet veel mensen het bestaan van Liberland kennen, nu jij het hebt geleerd. Laten we naar het andere onderwerp gaan."
 )
 val Fourth_message = hashMapOf(
-    EN to "Perfect! Now you are in the last part let's learn some history!",
+    EN to "Perfect! Now you are in the last part. Let's learn some history!",
     DE to "Perfekt! Jetzt sind Sie im letzten Teil. Lassen Sie uns etwas über die Geschichte erfahren!",
     TR to "Mükemmel! Artık son bölümdesiniz, hadi biraz tarih öğrenelim!",
     NL to "Perfect! Nu je in het laatste deel bent, laten we wat geschiedenis leren!"
+)
+val final_message = hashMapOf(
+    EN to "I hope you've found our Teaching session enlightening! Are you feeling ready for a little challenge to test your understanding?",
+    DE to "",
+    TR to "",
+    NL to "",
 )
 //Topic: Bitcoin
 val bitcoin_meaning = hashMapOf(
