@@ -24,11 +24,11 @@ val Testing: State = state(Parent) {
 var countt: Int = 0;
 val Question1_eco: State = state(Parent) {
     var correctAnswer: String? = null
+    var wrongAnswers: List<String>? = null
     onEntry {
         val questionone = QuestionOneEcon[users.current.nativeLang]
-        val question_third = QuestionThreeEcon[users.current.nativeLang]
         val text1 = questionone?.get("question")
-        correctAnswer = QuestionOneEcon[users.current.nativeLang]?.get("answer")
+        correctAnswer = QuestionOneEcon[users.current.nativeLang]?.get("answer") as? String
         if (text1 is String) {
             furhat.ask(text1)
             furhat.gesture(GesturesLib.PerformThoughtful1)
@@ -44,16 +44,17 @@ val Question1_eco: State = state(Parent) {
             furhat.gesture(GesturesLib.PerformSmile1)
             delay(300)
             goto(Question2_eco)
-
+        } else {
+            if (userResponse in wrongAnswers ?: emptyList()) {
+                furhat.say("That's not the correct answer. The correct answer is $correctAnswer.")
+                goto(Question2_eco)
+            } else {
+                furhat.say("Please use 1 2 3 or 4!")
+                furhat.gesture(GesturesLib.PerformSad1)
+                delay(300)
+                reentry()
+            }
         }
-        else {
-            furhat.say("That's not the correct answer. The correct answer is $correctAnswer.")
-            furhat.gesture(GesturesLib.PerformSad1)
-            delay(300)
-            goto(Question2_eco)
-
-        }
-
     }
 }
 val Question2_eco: State = state(Parent) {
@@ -67,6 +68,7 @@ val Question2_eco: State = state(Parent) {
             furhat.gesture(GesturesLib.PerformThoughtful1)
             delay(300)
         }
+        goto(Question3_eco)
     }
     onResponse{
         val userResponse = it.text.trim()
@@ -74,13 +76,44 @@ val Question2_eco: State = state(Parent) {
             furhat.say("Well Done")
             furhat.gesture(GesturesLib.ExpressSympathy1())
             furhat.gesture(GesturesLib.PerformSmile1)
-            countt++
+            goto(Question3_eco)
         } else {
             furhat.say("That's not the correct answer. The correct answer is $correctAnswer2.")
+            goto(Question3_eco)
 
         }
     }
 }
+val Question3_eco: State = state(Parent) {
+    var correctAnswer3: String? = null
+    onEntry {
+        val question_three = QuestionThreeEcon[users.current.nativeLang]
+        val text3 = question_three?.get("question3")
+        correctAnswer3 = QuestionThreeEcon[users.current.nativeLang]?.get("answer1")
+        if (text3 is String) {
+            furhat.ask(text3)
+            furhat.gesture(GesturesLib.PerformThoughtful1)
+            delay(300)
+        }
+        val QuestionDone = EconQuestionDone[users.current.nativeLang]
+        if (QuestionDone != null) {
+            furhat.say(QuestionDone)
+        }
+    }
+    onResponse{
+        val userResponse = it.text.trim()
+        if (userResponse.equals(correctAnswer3, ignoreCase = true)) {
+            furhat.say("Well Done")
+            furhat.gesture(GesturesLib.ExpressSympathy1())
+            furhat.gesture(GesturesLib.PerformSmile1)
+            countt++
+        } else {
+            furhat.say("That's not the correct answer. The correct answer is $correctAnswer3.")
+
+        }
+    }
+}
+
 
 
 

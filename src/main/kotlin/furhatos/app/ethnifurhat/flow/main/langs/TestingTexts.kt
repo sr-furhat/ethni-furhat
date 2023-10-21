@@ -2,7 +2,7 @@ package furhatos.app.ethnifurhat.flow.main.langs
 
 //Starting
 val StartScript = hashMapOf(
-    EN to "Ok. I'll start with reading questions and answers. Please say only the letter of the answer. Thanks! Let's begin.",
+    EN to "Ok. I'll start with reading questions and answers. Please say only the Number of the answer like 1 2 3 or 4. Thanks! Let's begin.",
     DE to "",
     TR to "",
     NL to ""
@@ -40,7 +40,8 @@ val QuestionOneEcon = hashMapOf(
                 "2-) A gradual decrease in the rate of inflation.\n" +
                 "3-) A sudden decrease in the price of goods and services.\n" +
                 "4-) None of the above.\n",
-        "answer" to "2"//listOf("two","second","2","decrease in the rate of inflation")
+        "answer" to "2",
+        "wrong" to listOf("1","3","4")//listOf("two","second","2","decrease in the rate of inflation")
     ),
     DE to hashMapOf(
         "question" to "Frage 1: Was ist Deflation?\n" +
@@ -48,7 +49,7 @@ val QuestionOneEcon = hashMapOf(
                 "2-) Ein allmählicher Rückgang der Inflationsrate.\n" +
                 "3-) Ein plötzlicher Rückgang der Preise für Waren und Dienstleistungen.\n" +
                 "4-) Keine der oben genannten.\n",
-        "answer" to "2"
+        "answer" to 2
     ),
     TR to hashMapOf(
         "question" to "Soru 1: Enflasyon nedir?\n" +
@@ -56,7 +57,7 @@ val QuestionOneEcon = hashMapOf(
                 "2-) Enflasyon hızında kademeli bir azalma.\n" +
                 "3-) Mal ve hizmetlerin fiyatlarında ani bir düşüş.\n" +
                 "4-) Yukarıdakilerin hiçbiri.\n",
-        "answer" to "2"
+        "answer" to 2
     ),
     NL to hashMapOf(
         "question" to "Vraag 1: Wat is desinflatie?\n" +
@@ -64,7 +65,7 @@ val QuestionOneEcon = hashMapOf(
                 "2-) Een geleidelijke daling van het inflatiepercentage.\n" +
                 "3-) Een plotselinge daling van de prijzen van goederen en diensten.\n" +
                 "4-) Geen van bovenstaande.\n",
-        "answer" to "2"
+        "answer" to 4
     )
 )
 
@@ -106,27 +107,29 @@ val QuestionTwoEcon = hashMapOf(
 
 
 val QuestionThreeEcon = hashMapOf(
-    EN to listOf(
-        "Question 3: What are the effects of moderate disinflation?",
-        "A) Decreased consumer purchasing power",
-        "B) Increased affordability of goods and services",
-        "C) Economic stagnation",
-        "D) A and C",
-        "B"),
-    DE to "",
-    TR to "",
-    NL to ""
+    EN to hashMapOf(
+        "question2" to "Question 3: What are the effects of moderate disinflation?\n"+
+            "A) Decreased consumer purchasing power.\n"+
+            "B) Increased affordability of goods and services.\n"+
+            "C) Economic stagnation.\n"+
+            "D) A and C.\n",
+        "answer2" to "2"),
+
+)
+
+val EconQuestionDone = hashMapOf(
+    EN to "Well done! Lets move to the History Questions"
 )
 
 //History
 val QuestionOneHistory = hashMapOf(
     EN to listOf(
-        "Question 1: Where did Mahmud Pasha defend during the Russo-Turkish War of 1877-1878?",
-        "A) Istanbul",
-        "B) Plevna (Pleven, Bulgaria)",
-        "C) Ankara",
-        "D) Athens",
-        "B"),
+        "Question 1: Where did Mahmud Pasha defend during the Russo-Turkish War of 1877-1878?\n"+
+        "A) Istanbul\n"+
+        "B) Plevna (Pleven, Bulgaria)\n"+
+        "C) Ankara\n"+
+        "D) Athens\n"),
+        //"B"),
     DE to "",
     TR to "",
     NL to ""
