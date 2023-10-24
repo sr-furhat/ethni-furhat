@@ -3,189 +3,25 @@ import furhat.libraries.standard.GesturesLib
 import furhatos.app.ethnifurhat.setting.nativeLang
 
 import furhatos.app.ethnifurhat.flow.Parent
-import furhatos.app.ethnifurhat.flow.main.langs.*
 import furhatos.flow.kotlin.*
 
 import furhatos.gestures.Gestures
 import furhatos.nlu.common.No
 import furhatos.nlu.common.Yes
 
-//The Expresssions and gestures are still not finished could be change
 val Teaching: State = state(Parent) {
     onEntry {
-        val message = First_Message[users.current.nativeLang]
-        if (message != null) {
-            furhat.say(message)
-        } else {
-            furhat.say("Sorry, I don't have a message for this language.")
+        furhat.say {
+            +"Ladies and Gentlemen."
+            + GesturesLib.ExpressInterest1()
+            +"Today, we delve into a crucial chapter of the Russo-Turkish War of 1877-1878 - the Siege of Plevna, a testament to human courage and determination against overwhelming odds."
+            + "In the annals of military history, the Siege of Plevna stands tall as a pivotal event during the Russo-Turkish War. At it's helm was the indomitable Ottoman commander, Osman Pasha, or Gazi Osman Pasha as he was known, whose unwavering leadership became synonymous with bravery."
+            + "The backdrop of this tale is the Russo-Turkish War of 1877-1878, a conflict between the mighty Russian Empire and the Ottoman Empire. Amidst this turmoil, the Siege of Plevna unfolded between July and December 1877, capturing the world's attention."
+            + "Picture this: Osman Pasha, a figure of unwavering resolve, leading the Ottoman forces against a formidable Russian and Romanian alliance. Despite overwhelming numerical odds, Osman Pasha and his troops displayed exceptional bravery, showcasing the epitome of military courage."
+            + "The siege, a true test of mettle, concluded in December 1877. Despite the remarkable resistance led by Osman Pasha, the Ottoman forces were eventually overcome by the superior might of the Russian and Romanian troops. This marked a significant victory for the Russian Empire and had profound implications for the Ottoman Empire."
+            + "Yet, in the face of defeat, Osman Pasha emerged as a symbol of unwavering resistance. His bravery and tenacity echoed through the corridors of history, immortalizing him as a hero in the Ottoman Empire. His legacy became a beacon of inspiration for generations to come."
+            + "In closing, the Siege of Plevna stands as a testament to the courage and determination of the Ottoman forces during a challenging period in their history. It is a reminder that the human spirit can triumph even in the face of insurmountable odds. As we explore this chapter, let us reflect on the resilience of Osman Pasha and his troops, underscoring the enduring spirit of human bravery."
         }
-        furhat.gesture(Gestures.BigSmile)
-        delay(1000)
-        goto(bitcoin)
+        goto(Thanks)
     }
 }
-val bitcoin: State = state(Parent) {
-    onEntry {
-        val meaning = bitcoin_meaning[users.current.nativeLang]
-        if (meaning != null) {
-            furhat.say(meaning)
-            furhat.gesture(Gestures.Thoughtful)
-            delay(500)
-        }
-        val workingsystem = bitcoin_workingsystem[users.current.nativeLang]
-        if (workingsystem != null) {
-            furhat.say(workingsystem)
-            furhat.gesture(Gestures.Surprise)
-            delay(500)
-        }
-        val keyconcepts = bitcoin_keyconcepts[users.current.nativeLang]
-        if (keyconcepts!= null) {
-            furhat.say(keyconcepts)
-            furhat.gesture(GesturesLib.PerformBigSmile1)
-            delay(500)
-        }
-        val secondmessage = Second_Message[users.current.nativeLang]
-        if (secondmessage != null) {
-            furhat.say(secondmessage)
-        }
-        furhat.gesture(GesturesLib.PerformSmile1)
-        furhat.gesture(GesturesLib.ExpressSympathy1())
-        goto(liberland)
-    }
-
-}
-val liberland: State = state(Parent) {
-    onEntry {
-        val liberland_introduction = liberland_introduction[users.current.nativeLang]
-        if (liberland_introduction != null) {
-            furhat.say(liberland_introduction)
-            furhat.gesture(GesturesLib.PerformSmile1)
-            delay(500)
-        }
-        val liberland_description = liberland_description[users.current.nativeLang]
-        if (liberland_description != null) {
-            furhat.say(liberland_description)
-            furhat.gesture(Gestures.Surprise)
-            delay(500)
-        }
-        val liberland_recongnition  = liberland_recongnition [users.current.nativeLang]
-        if (liberland_recongnition != null) {
-            furhat.say(liberland_recongnition )
-            furhat.gesture(GesturesLib.PerformBigSmile1)
-            delay(500)
-        }
-        val liberland_ideals  = liberland_ideals [users.current.nativeLang]
-        if (liberland_ideals != null) {
-            furhat.say(liberland_ideals )
-            furhat.gesture(GesturesLib.PerformBigSmile1)
-            delay(500)
-        }
-        val third_message = Third_message[users.current.nativeLang]
-        if (third_message != null) {
-            furhat.say(third_message)
-            furhat.gesture(GesturesLib.PerformTripleBlink)
-            furhat.gesture(GesturesLib.PerformIntenseShake)
-            goto(Disinfilation)
-        }
-    }
-}
-val Disinfilation: State = state(Parent) {
-    onEntry {
-        val Disinfilation_introduction = Disinfilation_introduction[users.current.nativeLang]
-        if (Disinfilation_introduction != null) {
-            furhat.say(Disinfilation_introduction)
-            GesturesLib.PerformThoughtful1
-
-            delay(500)
-        }
-        val Disinfilation_meaning = Disinfilation_meaning[users.current.nativeLang]
-        if (Disinfilation_meaning != null) {
-            furhat.say(Disinfilation_meaning)
-            furhat.gesture(GesturesLib.PerformBigSmile1)
-            delay(500)
-        }
-        val Disinfilation_causes = Disinfilation_causes[users.current.nativeLang]
-        if (Disinfilation_causes != null) {
-            furhat.say(Disinfilation_causes)
-            furhat.gesture(GesturesLib.PerformBigSmile1)
-            delay(500)
-        }
-        val Disinfilation_effects = Disinfilation_effects[users.current.nativeLang]
-        if (Disinfilation_effects != null) {
-            furhat.say(Disinfilation_effects)
-            furhat.gesture(GesturesLib.PerformBigSmile1)
-            delay(500)
-        }
-        val fourth_message = Fourth_message[users.current.nativeLang]
-        if (fourth_message != null) {
-            furhat.say(fourth_message)
-            furhat.gesture(GesturesLib.PerformTripleBlink)
-            furhat.gesture(GesturesLib.PerformIntenseShake)
-            goto(mahmutpasha)
-        }
-    }
-}
-val mahmutpasha: State = state(Parent) {
-    onEntry {
-        val MahmutPashaIntroduction  = Mahmut_pasha_introduction[users.current.nativeLang]
-        if (MahmutPashaIntroduction != null) {
-            furhat.say(MahmutPashaIntroduction)
-            GesturesLib.PerformThoughtful1
-
-            delay(500)
-        }
-        val MahmutPashaPersonWho  = Mahmut_pasha_personwho[users.current.nativeLang]
-        if (MahmutPashaPersonWho != null) {
-            furhat.say(MahmutPashaPersonWho)
-            furhat.gesture(GesturesLib.PerformBigSmile1)
-            delay(500)
-        }
-        val MahmutPashaSiegeofPlevna = Mahmut_pasha_siegofplevna[users.current.nativeLang]
-        if (MahmutPashaSiegeofPlevna != null) {
-            furhat.say(MahmutPashaSiegeofPlevna)
-            furhat.gesture(GesturesLib.PerformBigSmile1)
-            delay(500)
-        }
-        val MahmutPashaRecognition= Mahmut_pasha_recognition[users.current.nativeLang]
-        if (MahmutPashaRecognition != null) {
-            furhat.say(MahmutPashaRecognition)
-            furhat.gesture(GesturesLib.PerformBigSmile1)
-            delay(500)
-            goto(FinalMessage)
-        }
-
-
-    }
-}
-val FinalMessage: State = state(Parent) {
-    onEntry {
-        val Final_message = final_message[users.current.nativeLang]
-        if (Final_message != null) {
-            furhat.ask(Final_message)
-            delay(500)
-            furhat.gesture(GesturesLib.PerformThoughtful1) // Gesture to emphasize contemplation
-            delay(1500)
-            furhat.gesture(Gestures.Nod)
-
-        }
-    }
-    onResponse<Yes> {
-        furhat.gesture(GesturesLib.PerformBigSmile1)
-        goto(Testing)
-    }
-    onResponse<No> {
-        furhat.say{
-            + GesturesLib.PerformSad1
-            + GesturesLib.PerformHeadDown()
-            + "Oh, ok. If you change your mind I'll be here! "
-        }
-        goto(Sleeping)
-    }
-    onResponse {
-        furhat.say("WTH")
-    }
-}
-
-
-
-

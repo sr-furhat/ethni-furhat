@@ -1,7 +1,6 @@
 package furhatos.app.ethnifurhat.flow.main
 
 import furhat.libraries.standard.GesturesLib
-import furhatos.app.ethnifurhat.flow.main.langs.DefaultFaceAndVoice
 import furhatos.flow.kotlin.State
 import furhatos.flow.kotlin.furhat
 import furhatos.flow.kotlin.onUserEnter
