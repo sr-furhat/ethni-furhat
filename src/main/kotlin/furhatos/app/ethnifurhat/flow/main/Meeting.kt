@@ -8,6 +8,7 @@ import furhatos.flow.kotlin.voice.Voice
 import furhatos.nlu.common.*
 import furhatos.app.ethnifurhat.setting.nativeLang
 
+
 const val EN = "English"
 const val TR = "Turkish"
 const val NL = "Dutch"

@@ -32,7 +32,7 @@ val Greeting: State = state(Parent) {
             + GesturesLib.ExpressSurpriseMild1()
             + "Great! Thank you for helping us by joining our experiment! "
         }
-        goto(Meeting)
+
     }
 
     onResponse<No> {
