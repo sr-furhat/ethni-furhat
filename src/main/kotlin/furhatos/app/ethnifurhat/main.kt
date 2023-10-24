@@ -1,5 +1,4 @@
 package furhatos.app.ethnifurhat
-
 import furhatos.app.ethnifurhat.flow.Init
 import furhatos.flow.kotlin.Flow
 import furhatos.skills.Skill
