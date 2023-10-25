@@ -16,19 +16,22 @@ const val PL = "Polish"
 const val DE = "German"
 const val AR = "Arabic"
 
+const val MALE = "Rod22k_HQ"
+const val FEMALE = "Sharon22k_HQ"
+
 val DefaultFaceAndVoice = hashMapOf(
     "df" to "Titan",
-    "dv" to "Joey-neural",
+    "dv" to "Ryan22k_HQ",
 )
 
 val MeetingCharacters = hashMapOf(
-    EN to listOf("Gregory-Neural", "Marty"),
-    TR to listOf("Kendra-Neural", "Nazar"),
-    PL to listOf("Kendra-Neural", "Vinnie"),
-    PT to listOf("Kendra-Neural", "Patricia"),
-    DE to listOf("Kendra-Neural", "Jane"),
-    AR to listOf("Gregory-Neural", "Omar"),
-    NL to listOf("Kendra-Neural", "Jane"),
+    EN to listOf(MALE, "Marty"),
+    TR to listOf(FEMALE, "Nazar"),
+    PL to listOf(FEMALE, "Vinnie"),
+    PT to listOf(FEMALE, "Patricia"),
+    DE to listOf(FEMALE, "Jane"),
+    AR to listOf(MALE, "Omar"),
+    NL to listOf(FEMALE, "Jane"),
 )
 
 val MeetingLastCheck = listOf(
@@ -88,7 +91,8 @@ val FirstContact: State = state(Parent) {
 
 val LearnLanguage: State = state(Parent) {
     onEntry {
-        furhat.ask("Enough me. Let's know from you a bit. What is your native language? In English please.")
+        furhat.say("Enough me. Let's know from you a bit. What is your native language? In English please.")
+        goto(LastCheck)
     }
 
     onResponse<NluLib.SpokenLanguages> {
@@ -131,7 +135,8 @@ val LearnLanguage: State = state(Parent) {
 val LastCheck: State = state(Parent) {
     onEntry {
         furhat.say(MeetingLastCheck[0])
-        furhat.ask(MeetingLastCheck[1])
+        furhat.say(MeetingLastCheck[1])
+        goto(Teaching)
     }
 
     onReentry {

@@ -11,11 +11,12 @@ import furhatos.nlu.common.Yes
 
 val Greeting: State = state(Parent) {
     onEntry {
-        furhat.ask {
+        furhat.say {
             + GesturesLib.PerformThoughtful1
             + GesturesLib.PerformTripleBlink
             + "Hey! Would you like to learn something and join our experiment? "
         }
+        goto(Meeting)
     }
 
     onReentry {
