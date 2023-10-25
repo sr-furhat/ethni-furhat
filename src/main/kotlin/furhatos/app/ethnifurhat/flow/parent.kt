@@ -12,7 +12,7 @@ val Parent: State = state {
     include(UserButton)
     onUserEnter(instant = true) {
         when { // "it" is the user that entered
-            furhat.isAttendingUser -> furhat.glance(it) // Glance at new users entering
+            furhat.isAttendingUser -> furhat.glance(it.id) // Glance at new users entering
             !furhat.isAttendingUser -> furhat.attend(it) // Attend user if not attending anyone
         }
     }
@@ -28,5 +28,8 @@ val Parent: State = state {
             !furhat.isAttending(it) -> furhat.glance(it.head.location) // other user left, just glance
         }
     }
+
 }
+
+
 

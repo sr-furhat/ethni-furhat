@@ -10,6 +10,14 @@ import furhatos.nlu.common.No
 import furhatos.nlu.common.Yes
 
 val Teaching: State = state(Parent) {
+    onTime(repeat = 5000) { // every 5 seconds
+        if (users.count > 1) {
+            // Attend to a random user
+            furhat.attend(users.random)
+            delay(1500) // wait for a while before shifting attention
+        }
+    }
+
     onEntry {
         furhat.say {
             +"Ladies and Gentlemen."

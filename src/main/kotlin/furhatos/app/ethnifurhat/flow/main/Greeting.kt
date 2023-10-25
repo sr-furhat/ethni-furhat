@@ -2,15 +2,36 @@ package furhatos.app.ethnifurhat.flow.main
 
 import furhat.libraries.standard.GesturesLib
 import furhatos.app.ethnifurhat.flow.Parent
-import furhatos.flow.kotlin.State
-import furhatos.flow.kotlin.furhat
-import furhatos.flow.kotlin.onResponse
-import furhatos.flow.kotlin.state
+import furhatos.flow.kotlin.*
 import furhatos.nlu.common.No
 import furhatos.nlu.common.Yes
 
 val Greeting: State = state(Parent) {
     onEntry {
+        when (users.count) {
+            in 1..2 -> {
+                for (user in users.all) {
+                    furhat.attend(user)
+                    GesturesLib.PerformBigSmile1
+                    GesturesLib.ExpressEmpathy()
+                    furhat.say("Hi")
+
+                    delay(1500)  // Attend to the user for 3 seconds
+                }
+                goto(Greeting_2)
+            }
+            else -> {
+                furhat.say("Hello Everyone")
+                goto(Greeting_2)
+            }
+        }
+    }
+
+}
+
+val Greeting_2: State = state(Parent) {
+    onEntry {
+
         furhat.ask {
             + GesturesLib.PerformThoughtful1
             + GesturesLib.PerformTripleBlink
@@ -49,4 +70,6 @@ val Greeting: State = state(Parent) {
         furhat.ask("Sorry but. I couldn't understand you. Can you try again?")
     }
 }
+
+
 

@@ -20,7 +20,7 @@ val wizardButtons = partialState {
 
         }
         onButton("antromorphic",section = furhatos.flow.kotlin.Section.RIGHT, color = Color.Red) {
-            goto(Meeting)
+            goto(Teaching)
         }
 
 }
