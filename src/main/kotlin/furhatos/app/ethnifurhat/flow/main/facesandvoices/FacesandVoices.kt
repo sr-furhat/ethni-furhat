@@ -8,19 +8,22 @@ const val PL = "Polish"
 const val DE = "German"
 const val AR = "Arabic"
 
+const val MALE = "Rod22k_HQ"
+const val FEMALE = "Sharon22k_HQ"
+
 val DefaultFaceAndVoice = hashMapOf(
     "df" to "Titan",
-    "dv" to "Joey-neural",
+    "dv" to "Ryan22k_HQ",
 )
 
 val MeetingCharacters = hashMapOf(
-    EN to listOf("Gregory-Neural", "Marty"),
-    TR to listOf("Kendra-Neural", "Nazar"),
-    PL to listOf("Kendra-Neural", "Vinnie"),
-    PT to listOf("Kendra-Neural", "Patricia"),
-    DE to listOf("Kendra-Neural", "Jane"),
-    AR to listOf("Gregory-Neural", "Omar"),
-    NL to listOf("Kendra-Neural", "Jane"),
+    EN to listOf(MALE, "Marty"),
+    TR to listOf(FEMALE, "Nazar"),
+    PL to listOf(FEMALE, "Vinnie"),
+    PT to listOf(FEMALE, "Patricia"),
+    DE to listOf(FEMALE, "Jane"),
+    AR to listOf(MALE, "Omar"),
+    NL to listOf(FEMALE, "Jane"),
 )
 
 val DutchVoice = "test"
