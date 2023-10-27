@@ -18,7 +18,8 @@ const val AR = "Arabic"
 //    "dv" to "Ryan22k_HQ",
 //)
 //
-//val DutchVoice = "test"
+//val DutchVoice = "test" //MUST BE CHANGED
+//const val DifferentVoice = "Justin-Neural" //MUST BE CHANGED
 
 // VIRTUAL
 
@@ -30,6 +31,7 @@ val DefaultFaceAndVoice = hashMapOf(
     "dv" to "Joey-neural",
 )
 
+const val DifferentVoice = "Justin-Neural"
 const val DutchVoice = "Laura-Neural"
 
 val MeetingCharacters = hashMapOf(

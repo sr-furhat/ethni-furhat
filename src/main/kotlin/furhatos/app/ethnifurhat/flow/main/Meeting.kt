@@ -10,6 +10,7 @@ import furhatos.app.ethnifurhat.setting.nativeLang
 import furhatos.app.ethnifurhat.flow.main.facesandvoices.DefaultFaceAndVoice
 import furhatos.app.ethnifurhat.flow.main.facesandvoices.MeetingCharacters
 import furhatos.app.ethnifurhat.flow.main.facesandvoices.DutchVoice
+import furhatos.app.ethnifurhat.flow.main.facesandvoices.DifferentVoice
 
 val MeetingLastCheck = listOf(
     "Now that we have met, we can start our learning part. I'll try to teach you a topic from history, The Ottoman commander Gazi Osman Pasha. After I finish teaching you'll be tested by a quiz.",
@@ -50,7 +51,7 @@ val FirstContact: State = state(Parent) {
         delay(200)
 
         furhat.say("The only thing that I can change is not my face. At the same time ")
-        furhat.voice = Voice(MeetingCharacters["NL"]?.get(0))
+        furhat.voice = Voice(DifferentVoice)
         furhat.say("I can change my voice and language too!")
         delay(100)
 
@@ -95,12 +96,7 @@ val LanguageLearned: State = state(Parent) {
 val LastCheck: State = state(Parent) {
     onEntry {
         furhat.say(MeetingLastCheck[0])
-        furhat.ask(MeetingLastCheck[1])
+        furhat.say(MeetingLastCheck[1])
     }
-
-    onReentry {
-        furhat.ask(MeetingLastCheck[1])
-    }
-
 }
 
