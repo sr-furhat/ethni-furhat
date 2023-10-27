@@ -4,9 +4,7 @@ import furhat.libraries.standard.GesturesLib
 import furhatos.app.ethnifurhat.flow.Parent
 import furhatos.flow.kotlin.*
 import furhatos.flow.kotlin.voice.Voice
-import furhatos.app.ethnifurhat.setting.nativeLang
 import furhatos.app.ethnifurhat.flow.main.facesandvoices.DefaultFaceAndVoice
-import furhatos.app.ethnifurhat.flow.main.facesandvoices.MeetingCharacters
 import furhatos.app.ethnifurhat.flow.main.facesandvoices.DutchVoice
 import furhatos.app.ethnifurhat.flow.main.facesandvoices.DifferentVoice
 
@@ -68,33 +66,6 @@ val FirstContact: State = state(Parent) {
 
         furhat.character = DefaultFaceAndVoice["df"]
         furhat.voice = Voice(DefaultFaceAndVoice["dv"])
-        goto(LearnLanguage)
-    }
-}
-
-val LearnLanguage: State = state(Parent) {
-    onEntry {
-        furhat.attend(users.other)
-        furhat.say {
-            +"Enough me. Let's know from you a bit. What is your native language?"
-            +GesturesLib.ExpressInterest1()
-        }
-    }
-}
-
-val LanguageLearned: State = state(Parent) {
-    onEntry {
-        furhat.say{
-            + GesturesLib.ExpressThinking()
-            + "Oh you speak ${users.current.nativeLang} huh."
-        }
-
-        furhat.say("Let's continue with something might be more familiar with you then.")
-        furhat.voice = Voice(MeetingCharacters[users.current.nativeLang]?.get(0))
-        furhat.character = MeetingCharacters[users.current.nativeLang]?.get(1)
-        furhat.attend(users.random)
-        furhat.gesture(GesturesLib.ExpressEmpathy())
-        furhat.say("Perfect! Everything set!")
         goto(LastCheck)
     }
 }
