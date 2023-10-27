@@ -11,6 +11,20 @@ val Init2: State = state(Parent) {
     onEntry {
         furhat.say("Wuuh. Good morning.")
     }
+
+    onTime(repeat = 3000..5000) {
+        furhat.attend(users.other)
+    }
+
+    onTime(repeat = 15000..20000) {
+        furhat.say {
+            random{
+                + "Just waiting to everyone is set."
+                + "Take your time."
+                + "I'll start right after everything is set."
+            }
+        }
+    }
 }
 
 val Greeting: State = state(Parent) {
@@ -47,9 +61,13 @@ val Greeting: State = state(Parent) {
         furhat.say{
             + GesturesLib.ExpressPleased1()
             + "First of all. "
+        }
+        furhat.attend(users.other)
+        furhat.say{
             + GesturesLib.ExpressHappiness1()
-            + "I just want to say a big thank you from the bottom of my chip because you are helping us by joining our experiment."}
-
+            + "I just want to say a big thank you from the bottom of my chip because you are helping us by joining our experiment."
+        }
+        furhat.attend(users.other)
         goto(Meeting)
     }
 }

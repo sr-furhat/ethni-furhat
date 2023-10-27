@@ -20,6 +20,6 @@ val Init: State = state {
         furhat.voice = Voice(DefaultFaceAndVoice["dv"])
     }
     onEntry {
-        goto(Init2)
+        goto(Sleeping)
     }
 }
