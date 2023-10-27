@@ -7,29 +7,9 @@ import furhatos.flow.kotlin.*
 import furhatos.flow.kotlin.voice.Voice
 import furhatos.nlu.common.*
 import furhatos.app.ethnifurhat.setting.nativeLang
-
-const val EN = "English"
-const val TR = "Turkish"
-const val NL = "Dutch"
-const val PT = "Portuguese"
-const val PL = "Polish"
-const val DE = "German"
-const val AR = "Arabic"
-
-val DefaultFaceAndVoice = hashMapOf(
-    "df" to "Titan",
-    "dv" to "Joey-neural",
-)
-
-val MeetingCharacters = hashMapOf(
-    EN to listOf("Gregory-Neural", "Marty"),
-    TR to listOf("Kendra-Neural", "Nazar"),
-    PL to listOf("Kendra-Neural", "Vinnie"),
-    PT to listOf("Kendra-Neural", "Patricia"),
-    DE to listOf("Kendra-Neural", "Jane"),
-    AR to listOf("Gregory-Neural", "Omar"),
-    NL to listOf("Kendra-Neural", "Jane"),
-)
+import furhatos.app.ethnifurhat.flow.main.facesandvoices.DefaultFaceAndVoice
+import furhatos.app.ethnifurhat.flow.main.facesandvoices.MeetingCharacters
+import furhatos.app.ethnifurhat.flow.main.facesandvoices.DutchVoice
 
 val MeetingLastCheck = listOf(
     "Now that we have met, we can start our learning part. I'll try to teach you a topic from history, The Ottoman commander Gazi Osman Pasha. After I finish teaching you'll be tested by a quiz.",
@@ -38,6 +18,7 @@ val MeetingLastCheck = listOf(
 )
 
 val Meeting: State = state(Parent) {
+
     onEntry {
         goto(FirstContact)
     }
@@ -69,11 +50,11 @@ val FirstContact: State = state(Parent) {
         delay(200)
 
         furhat.say("The only thing that I can change is not my face. At the same time ")
-        furhat.voice = Voice("Justin-Neural")
+        furhat.voice = Voice(MeetingCharacters["NL"]?.get(0))
         furhat.say("I can change my voice and language too!")
         delay(100)
 
-        furhat.voice = Voice("Laura-Neural")
+        furhat.voice = Voice(DutchVoice)
         furhat.say{
             + GesturesLib.ExpressEmpathy()
             + "Hallo daar, ik ben een sociaal intelligente robot. Ik spreek vloeiend Nederlands!"
