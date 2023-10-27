@@ -12,14 +12,12 @@ val Sleeping: State = state {
     onEntry {
         furhat.character = DefaultFaceAndVoice["df"]
         furhat.voice = Voice(DefaultFaceAndVoice["dv"])
-        furhat.gesture(GesturesLib.PerformFallAsleepPersist)
         furhat.attendNobody()
+        furhat.gesture(GesturesLib.PerformFallAsleepPersist)
     }
 
     onUserEnter {
         furhat.gesture(GesturesLib.PerformWakeUpWithHeadShake)
-        delay(1500)
-        furhat.attend(it)
-        goto(Greeting)
+        goto(Init2)
     }
 }

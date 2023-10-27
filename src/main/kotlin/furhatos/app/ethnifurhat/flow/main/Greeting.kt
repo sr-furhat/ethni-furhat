@@ -7,6 +7,12 @@ import furhatos.flow.kotlin.users
 import furhatos.flow.kotlin.furhat
 import furhatos.flow.kotlin.state
 
+val Init2: State = state(Parent) {
+    onEntry {
+        furhat.say("Wuuh. Good morning.")
+    }
+}
+
 val Greeting: State = state(Parent) {
     onEntry {
         when (users.count) {
@@ -37,6 +43,7 @@ val Greeting: State = state(Parent) {
                 }
             }
         }
+        delay(150)
         furhat.say{
             + GesturesLib.ExpressPleased1()
             + "First of all. "
