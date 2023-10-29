@@ -39,7 +39,7 @@ val MeetingCharacters = hashMapOf(
     TR to listOf(FEMALE, "Nazar"),
     PL to listOf(FEMALE, "Vinnie"),
     PT to listOf(FEMALE, "Patricia"),
-    DE to listOf(FEMALE, "Jane"),
+    DE to listOf(MALE, "James"),
     AR to listOf(MALE, "Omar"),
     NL to listOf(FEMALE, "Jane"),
 )

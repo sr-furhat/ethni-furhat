@@ -16,12 +16,12 @@ val StartTheExperiment = partialState {
     onButton("Start Greeting", section = furhatos.flow.kotlin.Section.LEFT, color = Color.Green) {
         goto(Greeting)
     }
-    onButton("Start Teaching", section = furhatos.flow.kotlin.Section.LEFT, color = Color.Red) {
+    onButton("Start Teaching", section = furhatos.flow.kotlin.Section.LEFT, color = Color.Yellow) {
         furhat.gesture(GesturesLib.ExpressHappiness1())
         furhat.say(MeetingLastCheck[3])
         goto(Teaching)
     }
-    onButton("Swithc to No Ethni", section = furhatos.flow.kotlin.Section.LEFT, color = Color.Green) {
+    onButton("Swithc to No Ethni", section = furhatos.flow.kotlin.Section.LEFT, color = Color.Red) {
         goto(noInit2)
     }
 }
