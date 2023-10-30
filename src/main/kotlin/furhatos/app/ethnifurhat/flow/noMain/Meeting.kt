@@ -28,6 +28,7 @@ val noFirstContact: State = state(noParent) {
         furhat.attend(users.other)
         furhat.say("I'm one of the most advanced social robots out there!")
         furhat.gesture(GesturesLib.ExpressSmileCongratulatory1(), async = false)
+        furhat.attend(users.other)
         furhat.say("I can change my face in a second like this")
         furhat.attend(users.other)
         delay(300)
@@ -41,12 +42,10 @@ val noFirstContact: State = state(noParent) {
         furhat.character = "Nazar"
         delay(500)
         furhat.say("How about this one?")
-        furhat.attend(users.other)
-
-
         delay(500)
+        furhat.attend(users.other)
         furhat.character = DefaultFaceAndVoice["df"]
-        delay(200)
+        delay(500)
 
         furhat.say("The only thing that I can change is not my face. At the same time ")
         furhat.attend(users.other)

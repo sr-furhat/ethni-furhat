@@ -32,6 +32,7 @@ val Greeting: State = state(Parent) {
         when (users.count) {
             in 1..2 -> {
                 for (user in users.all) {
+                    delay(200)
                     furhat.attend(user)
                     GesturesLib.PerformBigSmile1
                     GesturesLib.ExpressEmpathy()
@@ -43,8 +44,7 @@ val Greeting: State = state(Parent) {
                             + "Welcome!"
                         }
                     }
-
-                    delay(150)  // Attend to the user for 3 seconds
+                    delay(200)
                 }
             }
             else -> {
