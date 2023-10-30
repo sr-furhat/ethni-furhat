@@ -1,17 +1,17 @@
-package furhatos.app.ethnifurhat.flow.main
+package furhatos.app.ethnifurhat.flow.noMain
 
 import furhat.libraries.standard.GesturesLib
-import furhatos.app.ethnifurhat.flow.Parent
+import furhatos.app.ethnifurhat.flow.noParent
 import furhatos.flow.kotlin.*
 
-val Thanks: State = state(Parent) {
+val noThanks: State = state(noParent) {
     onEntry {
         furhat.say {
             delay(500)
             +"And that was it!"
             +GesturesLib.ExpressHappiness1()
         }
-            furhat.attend(users.random)
+        furhat.attend(users.random)
         furhat.say {
             + "A big thank you for joining our experiment and listening me!"
             + GesturesLib.ExpressInterest1()}
@@ -26,6 +26,6 @@ val Thanks: State = state(Parent) {
             + GesturesLib.ExpressSmileCongratulatory1()
             + "Now I'm going to sleep."
         }
-        goto(Sleeping)
+        goto(noSleeping)
     }
 }

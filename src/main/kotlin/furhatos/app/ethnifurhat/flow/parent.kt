@@ -1,15 +1,11 @@
 package furhatos.app.ethnifurhat.flow
 
-import furhat.libraries.standard.BehaviorLib
 import furhatos.app.ethnifurhat.flow.main.Sleeping
-import furhatos.app.ethnifurhat.flow.wizardbuttons.EthnicityButton
-import furhatos.app.ethnifurhat.flow.wizardbuttons.StartTheExperiment
+import furhatos.app.ethnifurhat.flow.wizardButtons.NoStartTheExperiment
 import furhatos.flow.kotlin.*
 
-val Parent: State = state {
-    include(BehaviorLib.AutomaticMovements.randomHeadMovements())
-    include(StartTheExperiment)
-    include(EthnicityButton)
+val noParent: State = state {
+    include(NoStartTheExperiment)
     onUserEnter(instant = true) {
         when { // "it" is the user that entered
             furhat.isAttendingUser -> furhat.glance(it.id) // Glance at new users entering
@@ -29,4 +25,3 @@ val Parent: State = state {
         }
     }
 }
-

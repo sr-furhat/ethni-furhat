@@ -1,17 +1,6 @@
-package furhatos.app.ethnifurhat.flow.main.facesandvoices
-
-const val EN = "English"
-const val TR = "Turkish"
-const val NL = "Dutch"
-const val PT = "Portuguese"
-const val PL = "Polish"
-const val DE = "German"
-const val AR = "Arabic"
+package furhatos.app.ethnifurhat.flow.noMain.facesandvoices
 
 // ROBOT
-
-const val MALE = "Rod22k_HQ"
-const val FEMALE = "Sharon22k_HQ"
 
 val DefaultFaceAndVoice = hashMapOf(
     "df" to "Titan",
@@ -22,9 +11,6 @@ val DutchVoice = "Jasmijn22k_HQ"
 const val DifferentVoice = "WillHappy22k_HQ"
 
 // VIRTUAL
-
-//const val MALE = "Gregory-Neural"
-//const val FEMALE = "Kendra-Neural"
 //
 //val DefaultFaceAndVoice = hashMapOf(
 //    "df" to "Titan",
@@ -33,20 +19,3 @@ const val DifferentVoice = "WillHappy22k_HQ"
 //
 //const val DifferentVoice = "Justin-Neural"
 //const val DutchVoice = "Laura-Neural"
-//
-
-
-
-
-
-val MeetingCharacters = hashMapOf(
-    EN to listOf(MALE, "Marty"),
-    TR to listOf(FEMALE, "Nazar"),
-    PL to listOf(FEMALE, "Vinnie"),
-    PT to listOf(FEMALE, "Patricia"),
-    DE to listOf(MALE, "James"),
-    AR to listOf(MALE, "Omar"),
-    NL to listOf(FEMALE, "Jane"),
-)
-
-

@@ -1,29 +1,27 @@
-package furhatos.app.ethnifurhat.flow.main
+package furhatos.app.ethnifurhat.flow.noMain
 
 import furhat.libraries.standard.GesturesLib
-import furhatos.app.ethnifurhat.flow.Parent
+import furhatos.app.ethnifurhat.flow.noParent
 import furhatos.flow.kotlin.*
 import furhatos.flow.kotlin.voice.Voice
-import furhatos.app.ethnifurhat.setting.nativeLang
-import furhatos.app.ethnifurhat.flow.main.facesandvoices.DefaultFaceAndVoice
-import furhatos.app.ethnifurhat.flow.main.facesandvoices.MeetingCharacters
-import furhatos.app.ethnifurhat.flow.main.facesandvoices.DutchVoice
-import furhatos.app.ethnifurhat.flow.main.facesandvoices.DifferentVoice
+import furhatos.app.ethnifurhat.flow.noMain.facesandvoices.DefaultFaceAndVoice
+import furhatos.app.ethnifurhat.flow.noMain.facesandvoices.DutchVoice
+import furhatos.app.ethnifurhat.flow.noMain.facesandvoices.DifferentVoice
 
-val MeetingLastCheck = listOf(
+val noMeetingLastCheck = listOf(
     "Now that we have met, we can start our learning part.",
     "I'll try to teach you a topic from history, The Ottoman commander Gazi Osman Pasha. After I finish teaching you'll be tested by a quiz.",
     "Are you ready?",
     "Then let's begin! Good luck!",
 )
 
-val Meeting: State = state(Parent) {
+val noMeeting: State = state(noParent) {
     onEntry {
-        goto(FirstContact)
+        goto(noFirstContact)
     }
 }
 
-val FirstContact: State = state(Parent) {
+val noFirstContact: State = state(noParent) {
     onEntry {
         furhat.say("First of all hi! I'm Furhat")
         delay(200)
@@ -67,46 +65,18 @@ val FirstContact: State = state(Parent) {
 
         furhat.character = DefaultFaceAndVoice["df"]
         furhat.voice = Voice(DefaultFaceAndVoice["dv"])
-        goto(LearnLanguage)
+        goto(noLastCheck)
     }
 }
 
-val LearnLanguage: State = state(Parent) {
-    onEntry {
-        furhat.attend(users.other)
-        furhat.say {
-            +"Enough me. Let's know from you a bit. What is your native language?"
-            +GesturesLib.ExpressInterest1()
-        }
-    }
-}
-
-val LanguageLearned: State = state(Parent) {
-    onEntry {
-        furhat.say{
-            + GesturesLib.ExpressThinking()
-            + "Oh you speak ${users.current.nativeLang} huh."
-        }
-
-        furhat.say("Let's continue with something might be more familiar with you then.")
-        furhat.voice = Voice(MeetingCharacters[users.current.nativeLang]?.get(0))
-        furhat.character = MeetingCharacters[users.current.nativeLang]?.get(1)
-        furhat.attend(users.random)
-        furhat.gesture(GesturesLib.ExpressEmpathy())
-        furhat.say("Perfect! Everything set!")
-        goto(LastCheck)
-    }
-}
-
-val LastCheck: State = state(Parent) {
+val noLastCheck: State = state(noParent) {
     onEntry {
         furhat.attend(users.random)
-        furhat.say(MeetingLastCheck[0])
+        furhat.say(noMeetingLastCheck[0])
         furhat.attend(users.random)
-        furhat.say(MeetingLastCheck[1])
+        furhat.say(noMeetingLastCheck[1])
         furhat.attend(users.random)
-        furhat.say(MeetingLastCheck[2])
+        furhat.say(noMeetingLastCheck[2])
         furhat.gesture(GesturesLib.ExpressThinking())
     }
 }
-
