@@ -10,7 +10,7 @@ val teachingScript = listOf(
     "Gazi Osman Pasha was a military leader or \"pasha\" from the Ottoman Empire.",
     "He was born in 1832. As he grew up, he showed great skill in military strategy and leadership. ",
     "In the late 1800s, the Ottoman Empire and the Russian Empire had disagreements. ",
-    "This led to a big war called the Russo-Turkish War in 1877-1878. " +
+    "This led to a big war called the Russo-Turkish War in 1877-1878. ",
     "Many battles happened during this war, but the most famous one is the Battle of Plevna. ",
     "In 1877, Russian troops wanted to capture a town called Plevna in modern-day Bulgaria. ",
     "The reason? It was a key place to control if they wanted to move towards the Ottoman capital, Istanbul. ",
