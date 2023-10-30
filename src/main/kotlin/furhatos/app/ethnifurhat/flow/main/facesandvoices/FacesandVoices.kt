@@ -34,15 +34,19 @@ const val DifferentVoice = "WillHappy22k_HQ"
 //const val DifferentVoice = "Justin-Neural"
 //const val DutchVoice = "Laura-Neural"
 //
-//val MeetingCharacters = hashMapOf(
-//    EN to listOf(MALE, "Marty"),
-//    TR to listOf(FEMALE, "Nazar"),
-//    PL to listOf(FEMALE, "Vinnie"),
-//    PT to listOf(FEMALE, "Patricia"),
-//    DE to listOf(MALE, "James"),
-//    AR to listOf(MALE, "Omar"),
-//    NL to listOf(FEMALE, "Jane"),
-//)
-//
+
+
+
+
+
+val MeetingCharacters = hashMapOf(
+    EN to listOf(MALE, "Marty"),
+    TR to listOf(FEMALE, "Nazar"),
+    PL to listOf(FEMALE, "Vinnie"),
+    PT to listOf(FEMALE, "Patricia"),
+    DE to listOf(MALE, "James"),
+    AR to listOf(MALE, "Omar"),
+    NL to listOf(FEMALE, "Jane"),
+)
 
 
