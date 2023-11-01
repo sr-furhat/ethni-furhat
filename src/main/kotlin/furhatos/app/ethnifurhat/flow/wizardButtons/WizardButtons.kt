@@ -17,7 +17,7 @@ val StartTheExperiment = partialState {
     }
     onButton("Start Teaching", section = furhatos.flow.kotlin.Section.LEFT, color = Color.Yellow) {
         furhat.gesture(GesturesLib.ExpressHappiness1())
-        furhat.say(MeetingLastCheck[3])
+        furhat.say("Then let's begin! Good luck!")
         goto(Teaching)
     }
 }
