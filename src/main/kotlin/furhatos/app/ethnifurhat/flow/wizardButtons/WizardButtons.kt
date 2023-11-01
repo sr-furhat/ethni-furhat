@@ -5,7 +5,6 @@ import furhatos.app.ethnifurhat.flow.main.Greeting
 import furhatos.app.ethnifurhat.flow.main.LanguageLearned
 import furhatos.app.ethnifurhat.flow.main.MeetingLastCheck
 import furhatos.app.ethnifurhat.flow.main.Teaching
-import furhatos.app.ethnifurhat.flow.noMain.noInit2
 import furhatos.app.ethnifurhat.setting.nativeLang
 import furhatos.flow.kotlin.Color
 import furhatos.flow.kotlin.furhat
@@ -20,9 +19,6 @@ val StartTheExperiment = partialState {
         furhat.gesture(GesturesLib.ExpressHappiness1())
         furhat.say(MeetingLastCheck[3])
         goto(Teaching)
-    }
-    onButton("Swithc to No Ethni", section = furhatos.flow.kotlin.Section.LEFT, color = Color.Red) {
-        goto(noInit2)
     }
 }
 
