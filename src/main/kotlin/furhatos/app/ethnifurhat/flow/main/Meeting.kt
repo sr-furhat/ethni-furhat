@@ -1,27 +1,27 @@
-package furhatos.app.ethnifurhat.flow.noMain
+package furhatos.app.ethnifurhat.flow.main
 
 import furhat.libraries.standard.GesturesLib
-import furhatos.app.ethnifurhat.flow.noParent
+import furhatos.app.ethnifurhat.flow.Parent
 import furhatos.flow.kotlin.*
 import furhatos.flow.kotlin.voice.Voice
-import furhatos.app.ethnifurhat.flow.noMain.facesandvoices.DefaultFaceAndVoice
-import furhatos.app.ethnifurhat.flow.noMain.facesandvoices.DutchVoice
-import furhatos.app.ethnifurhat.flow.noMain.facesandvoices.DifferentVoice
+import furhatos.app.ethnifurhat.flow.main.facesandvoices.DefaultFaceAndVoice
+import furhatos.app.ethnifurhat.flow.main.facesandvoices.DutchVoice
+import furhatos.app.ethnifurhat.flow.main.facesandvoices.DifferentVoice
 
-val noMeetingLastCheck = listOf(
+val MeetingLastCheck = listOf(
     "Now that we have met, we can start our learning part.",
     "I'll try to teach you a topic from history, The Ottoman commander Gazi Osman Pasha. After I finish teaching you'll be tested by a quiz.",
     "Are you ready?",
     "Then let's begin! Good luck!",
 )
 
-val noMeeting: State = state(noParent) {
+val Meeting: State = state(Parent) {
     onEntry {
         goto(noFirstContact)
     }
 }
 
-val noFirstContact: State = state(noParent) {
+val noFirstContact: State = state(Parent) {
     onEntry {
         furhat.say("First of all hi! I'm Furhat")
         delay(200)
@@ -69,14 +69,14 @@ val noFirstContact: State = state(noParent) {
     }
 }
 
-val noLastCheck: State = state(noParent) {
+val noLastCheck: State = state(Parent) {
     onEntry {
         furhat.attend(users.random)
-        furhat.say(noMeetingLastCheck[0])
+        furhat.say(MeetingLastCheck[0])
         furhat.attend(users.random)
-        furhat.say(noMeetingLastCheck[1])
+        furhat.say(MeetingLastCheck[1])
         furhat.attend(users.random)
-        furhat.say(noMeetingLastCheck[2])
+        furhat.say(MeetingLastCheck[2])
         furhat.gesture(GesturesLib.ExpressThinking())
     }
 }

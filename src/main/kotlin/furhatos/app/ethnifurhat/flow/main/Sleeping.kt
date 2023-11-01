@@ -1,4 +1,4 @@
-package furhatos.app.ethnifurhat.flow.noMain
+package furhatos.app.ethnifurhat.flow.main
 
 import furhat.libraries.standard.GesturesLib
 import furhatos.flow.kotlin.State
@@ -6,9 +6,9 @@ import furhatos.flow.kotlin.furhat
 import furhatos.flow.kotlin.onUserEnter
 import furhatos.flow.kotlin.state
 import furhatos.flow.kotlin.voice.Voice
-import furhatos.app.ethnifurhat.flow.noMain.facesandvoices.DefaultFaceAndVoice
+import furhatos.app.ethnifurhat.flow.main.facesandvoices.DefaultFaceAndVoice
 
-val noSleeping: State = state {
+val Sleeping: State = state {
     onEntry {
         furhat.character = DefaultFaceAndVoice["df"]
         furhat.voice = Voice(DefaultFaceAndVoice["dv"])
@@ -18,6 +18,6 @@ val noSleeping: State = state {
 
     onUserEnter {
         furhat.gesture(GesturesLib.PerformWakeUpWithHeadShake)
-        goto(noInit2)
+        goto(Init2)
     }
 }

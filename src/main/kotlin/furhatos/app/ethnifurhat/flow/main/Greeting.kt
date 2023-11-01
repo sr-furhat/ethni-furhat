@@ -1,13 +1,13 @@
-package furhatos.app.ethnifurhat.flow.noMain
+package furhatos.app.ethnifurhat.flow.main
 
 import furhat.libraries.standard.GesturesLib
-import furhatos.app.ethnifurhat.flow.noParent
+import furhatos.app.ethnifurhat.flow.Parent
 import furhatos.flow.kotlin.State
 import furhatos.flow.kotlin.users
 import furhatos.flow.kotlin.furhat
 import furhatos.flow.kotlin.state
 
-val noInit2: State = state(noParent) {
+val Init2: State = state(Parent) {
     onEntry {
         furhat.say("Wuuh. Good morning.")
     }
@@ -27,7 +27,7 @@ val noInit2: State = state(noParent) {
     }
 }
 
-val noGreeting: State = state(noParent) {
+val Greeting: State = state(Parent) {
     onEntry {
         when (users.count) {
             in 1..2 -> {
@@ -68,6 +68,6 @@ val noGreeting: State = state(noParent) {
             + "I just want to say a big thank you from the bottom of my chip because you are helping us by joining our experiment."
         }
         furhat.attend(users.other)
-        goto(noMeeting)
+        goto(Meeting)
     }
 }

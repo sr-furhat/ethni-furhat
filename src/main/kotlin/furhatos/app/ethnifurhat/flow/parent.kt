@@ -4,7 +4,7 @@ import furhatos.app.ethnifurhat.flow.main.Sleeping
 import furhatos.app.ethnifurhat.flow.wizardButtons.NoStartTheExperiment
 import furhatos.flow.kotlin.*
 
-val noParent: State = state {
+val Parent: State = state {
     include(NoStartTheExperiment)
     onUserEnter(instant = true) {
         when { // "it" is the user that entered

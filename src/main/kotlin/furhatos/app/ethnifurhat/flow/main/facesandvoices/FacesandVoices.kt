@@ -1,4 +1,4 @@
-package furhatos.app.ethnifurhat.flow.noMain.facesandvoices
+package furhatos.app.ethnifurhat.flow.main.facesandvoices
 
 // ROBOT
 

@@ -1,7 +1,7 @@
-package furhatos.app.ethnifurhat.flow.noMain
+package furhatos.app.ethnifurhat.flow.main
 
 import furhat.libraries.standard.GesturesLib
-import furhatos.app.ethnifurhat.flow.noParent
+import furhatos.app.ethnifurhat.flow.Parent
 import furhatos.flow.kotlin.*
 
 val teachingScript = listOf(
@@ -32,7 +32,7 @@ val teachingScript = listOf(
     "And if you ever come across a war song called the \"Plevna Anthem,\" know that it was composed in honor of this very hero and his valiant stand."
 )
 
-val noTeaching: State = state(noParent) {
+val Teaching: State = state(Parent) {
     onEntry {
         furhat.attend(users.random)
         for (element in teachingScript) {
@@ -40,6 +40,6 @@ val noTeaching: State = state(noParent) {
             furhat.attend(users.other)
             furhat.say(element)
         }
-        goto(noThanks)
+        goto(Thanks)
     }
 }
