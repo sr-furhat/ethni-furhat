@@ -10,7 +10,7 @@ import furhatos.flow.kotlin.state
 import furhatos.flow.kotlin.users
 import furhatos.flow.kotlin.voice.Voice
 import furhatos.app.ethnifurhat.flow.main.facesandvoices.DefaultFaceAndVoice
-import furhatos.app.ethnifurhat.flow.main.Init2
+
 
 val Init: State = state {
     init {

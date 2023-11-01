@@ -17,11 +17,11 @@ val MeetingLastCheck = listOf(
 
 val Meeting: State = state(Parent) {
     onEntry {
-        goto(noFirstContact)
+        goto(FirstContact)
     }
 }
 
-val noFirstContact: State = state(Parent) {
+val FirstContact: State = state(Parent) {
     onEntry {
         furhat.say("First of all hi! I'm Furhat")
         delay(200)
@@ -65,11 +65,11 @@ val noFirstContact: State = state(Parent) {
 
         furhat.character = DefaultFaceAndVoice["df"]
         furhat.voice = Voice(DefaultFaceAndVoice["dv"])
-        goto(noLastCheck)
+        goto(LastCheck)
     }
 }
 
-val noLastCheck: State = state(Parent) {
+val LastCheck: State = state(Parent) {
     onEntry {
         furhat.attend(users.random)
         furhat.say(MeetingLastCheck[0])
