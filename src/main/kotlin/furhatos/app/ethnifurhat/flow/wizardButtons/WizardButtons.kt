@@ -15,7 +15,7 @@ val StartTheExperiment = partialState {
     }
     onButton("Start Teaching - No Ethni", section = Section.LEFT, color = Color.Yellow) {
         furhat.gesture(GesturesLib.ExpressHappiness1())
-        furhat.say(MeetingLastCheck[3])
+        furhat.say("Then let's begin! Good luck!")
         goto(Teaching)
     }
 }

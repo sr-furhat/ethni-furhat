@@ -10,9 +10,11 @@ import furhatos.app.ethnifurhat.flow.main.facesandvoices.DifferentVoice
 
 val MeetingLastCheck = listOf(
     "Now that we have met, we can start our learning part.",
-    "I'll try to teach you a topic from history, The Ottoman commander Gazi Osman Pasha. After I finish teaching you'll be tested by a quiz.",
+    "I'll try to teach you a topic from history, The Ottoman commander Gazi Osman Pasha. Please give your full attention to me.",
+    "After I finish my teaching you'll tested by ten questions.",
+    "We will give you a paper and ask you to answer those questions so be prepared for than and listen me with the knowledge that you'll be tested with those knowledge.",
+    "So again. Give your full attention to me.",
     "Are you ready?",
-    "Then let's begin! Good luck!",
 )
 
 val Meeting: State = state(Parent) {
@@ -65,18 +67,24 @@ val FirstContact: State = state(Parent) {
 
         furhat.character = DefaultFaceAndVoice["df"]
         furhat.voice = Voice(DefaultFaceAndVoice["dv"])
+
+        furhat.say("These were a coupe of my features but let's start talking about the real deal")
+        furhat.gesture(GesturesLib.PerformTripleBlink)
+        furhat.attend(users.other)
+        furhat.say("I'm here as a History Teacher and I will teach you a topic that I though you will be interested in!")
+        furhat.gesture(GesturesLib.PerformSmile1)
+        furhat.say("Yeah I think this should be enough for now.")
         goto(LastCheck)
     }
 }
 
 val LastCheck: State = state(Parent) {
     onEntry {
-        furhat.attend(users.random)
-        furhat.say(MeetingLastCheck[0])
-        furhat.attend(users.random)
-        furhat.say(MeetingLastCheck[1])
-        furhat.attend(users.random)
-        furhat.say(MeetingLastCheck[2])
+        for (element in MeetingLastCheck) {
+            delay(250)
+            furhat.attend(users.other)
+            furhat.say(element)
+        }
         furhat.gesture(GesturesLib.ExpressThinking())
     }
 }
