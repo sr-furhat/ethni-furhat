@@ -3,50 +3,72 @@ package furhatos.app.ethnifurhat.flow.main
 import furhat.libraries.standard.GesturesLib
 import furhatos.app.ethnifurhat.flow.Parent
 import furhatos.flow.kotlin.State
+import furhatos.flow.kotlin.users
 import furhatos.flow.kotlin.furhat
-import furhatos.flow.kotlin.onResponse
 import furhatos.flow.kotlin.state
-import furhatos.nlu.common.No
-import furhatos.nlu.common.Yes
+
+val Init2: State = state(Parent) {
+    onEntry {
+        furhat.say("Wuuh. Good morning.")
+    }
+
+    onTime(repeat = 3000..5000) {
+        furhat.attend(users.other)
+    }
+
+    onTime(repeat = 15000..20000) {
+        furhat.say {
+            random{
+                + "Just waiting to everyone is set."
+                + "Take your time."
+                + "I'll start right after everything is set."
+            }
+        }
+    }
+}
 
 val Greeting: State = state(Parent) {
     onEntry {
-        furhat.ask {
-            + GesturesLib.PerformThoughtful1
-            + GesturesLib.PerformTripleBlink
-            + "Hey! Would you like to learn something and join our experiment? "
+        when (users.count) {
+            in 1..2 -> {
+                for (user in users.all) {
+                    delay(200)
+                    furhat.attend(user)
+                    GesturesLib.PerformBigSmile1
+                    GesturesLib.ExpressEmpathy()
+                    furhat.say {
+                        random {
+                            + "Hi!"
+                            + "Hello!"
+                            + "Hello there!"
+                            + "Welcome!"
+                        }
+                    }
+                    delay(200)
+                }
+            }
+            else -> {
+                furhat.say {
+                    random {
+                        +"Hello everyone!"
+                        +"Hi everyone!"
+                        +"Wow! Welcome everyone!"
+                    }
+                }
+            }
         }
-    }
-
-    onReentry {
-        furhat.ask {
-            + GesturesLib.PerformThoughtful1
-            + "Would you like to learn something and join our experiment? "
-        }
-    }
-
-    onResponse<Yes> {
-        furhat.say {
-            + GesturesLib.PerformSmile1
-            + GesturesLib.PerformHeadeUp()
-            + GesturesLib.ExpressSurpriseMild1()
-            + "Great! Thank you for helping us by joining our experiment! "
-        }
-        goto(Meeting)
-    }
-
-    onResponse<No> {
+        delay(150)
         furhat.say{
-            + GesturesLib.PerformSad1
-            + GesturesLib.PerformHeadDown()
-            + "Oh, ok. If you change your mind I'll be here! "
+            + GesturesLib.ExpressPleased1()
+            + "First of all. "
         }
-        goto(Sleeping)
-    }
-
-    onResponse {
-        furhat.gesture(GesturesLib.PerformThoughtful1)
-        furhat.ask("Sorry but. I couldn't understand you. Can you try again?")
+        furhat.attend(users.other)
+        furhat.say{
+            + GesturesLib.ExpressHappiness1()
+            + "I just want to say a big thank you from the bottom of my chip because you are helping us by joining our experiment."
+        }
+        furhat.attend(users.other)
+        goto(Meeting)
     }
 }
 
